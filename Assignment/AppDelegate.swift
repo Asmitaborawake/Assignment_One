@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import KRProgressHUD
+import KRActivityIndicatorView
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +43,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    internal func showAlertMessage(alertTitile: String , alertMessage: String) {
+        
+        // create the alert
+        let alert = UIAlertController(title: alertTitile, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        // show the alert
+        
+        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        
+    }
 
 }
+class KRProgressHUDAppearance {
+    /// Default style.
+    public var style = KRProgressHUDStyle.white
+    /// Default mask type.
+    public var maskType = KRProgressHUDMaskType.black
+    /// Default KRActivityIndicatorView style.
+    public var activityIndicatorStyle = KRActivityIndicatorViewStyle.gradationColor(head: .black, tail: .lightGray)
+    /// Default message label font.
+    public var font = UIFont.systemFont(ofSize: 13)
+    /// Default HUD center position.
+    public var viewCenterPosition = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2)
+    /// Default time to show HUD.
+    public var deadlineTime = Double(1.0)
+}
+
 
